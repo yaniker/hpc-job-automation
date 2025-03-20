@@ -23,41 +23,11 @@ All user-specific settings are defined in the `config.txt` file. Edit this file 
 SLURM_ACCOUNT=your_account_name
 
 # Path to your executable script
-EXECUTABLE="python your_script.py"
-
-# Environment activation command (leave blank if not needed)
-ENV_ACTIVATE="source ~/miniconda3/etc/profile.d/conda.sh && conda activate your_env_name"
-
-# Job array parameters
-MAX_TASKS_PER_JOB=10
-MAX_SUBMIT=20
-
-# Path to the job array script (do not change unless necessary)
-JOB_SCRIPT="job_array.sh"
-
-# Sleep duration in seconds when queue is full
-SLEEP_DURATION=90
+EXECUTABLE="python your_script.py" ...
 ```
 
 ## Generating Parameters
 The `generate_params.py` script generates a list of parameters for your jobs, which are saved in `_params.txt`. Each line in `_params.txt` represents the arguments for a single job.
-
-### Example `generate_params.py`
-```
-import itertools
-
-# Define your parameters here
-param1 = ["value1", "value2"]
-param2 = ["optionA", "optionB"]
-
-# Generate all combinations of parameters
-params_list = [f"{p1} {p2}" for p1, p2 in itertools.product(param1, param2)]
-
-# Write parameters to _params.txt
-with open("_params.txt", "w") as f:
-    for params in params_list:
-        f.write(params + "\n")
-```
 
 ### Running the Script
 Run the script to create _params.txt:
