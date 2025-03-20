@@ -65,10 +65,10 @@ Run the script to create _params.txt:
 Edit `generate_params.py` to define your own parameters based on what your script (your_script.py) expects.
 
 ## Job Array Script
-The job_array.sh script is pre-configured to execute your script with parameters from _params.txt. It sources settings from config.txt, so you typically don’t need to modify it directly. However, you may need to adjust SLURM directives (e.g., --time, --mem) in job_array.sh to match your job’s resource requirements.
+The `job_array.sh` script is pre-configured to execute your script with parameters from _params.txt. It sources settings from `config.txt`, so you typically don’t need to modify it directly. However, you may need to adjust SLURM directives (e.g., --time, --mem) in `job_array.sh` to match your job’s resource requirements.
 
 ## Scheduler Script
-The slurm_scheduler.sh script oversees the submission process. It calls submit_job_arrays.sh to submit jobs in batches, ensuring that the limits set in config.txt (e.g., MAX_SUBMIT) are respected.
+The slurm_scheduler.sh script oversees the submission process. It calls `submit_job_arrays.sh` to submit jobs in batches, ensuring that the limits set in `config.txt` (e.g., `MAX_SUBMIT`) are respected.
 
 ### Submitting the Scheduler
 Submit the scheduler to SLURM with:
@@ -76,10 +76,10 @@ Submit the scheduler to SLURM with:
 sbatch slurm_scheduler.sh
 ```
 
-This script runs until all tasks in _params.txt are processed.
+This script runs until all tasks in `_params.txt` are processed.
 
 ## Submit Job Arrays Script
-The `submit_job_arrays.sh` script is an internal component called by `slurm_scheduler.sh`. It handles submitting job arrays in batches based on the settings in config.txt. You don’t need to interact with this script directly.
+The `submit_job_arrays.sh` script is an internal component called by `slurm_scheduler.sh`. It handles submitting job arrays in batches based on the settings in `config.txt`. You don’t need to interact with this script directly.
 
 ## Monitor Your Jobs
 Use SLURM commands to check job status:
