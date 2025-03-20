@@ -14,7 +14,7 @@ for p1, p2 in itertools.product(param1, param2):
     params_list.append(params)
 
 # Write to params.txt (one parameter set per line)
-with open("params.txt", "w") as f:
+with open("_params.txt", "w") as f: # Do NOT change the name.
     for params in params_list:
         f.write(params + "\n")
 
