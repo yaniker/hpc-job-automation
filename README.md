@@ -91,8 +91,8 @@ squeue -u $USER
 Here are some common issues and fixes:
 
 - **Environment Not Activating**  
-Double-check the ENV_ACTIVATE field in config.txt. Ensure the command works when run manually in your terminal. If no environment is needed, leave it blank.  
+Double-check the `ENV_ACTIVATE` field in `config.txt`. Ensure the command works when run manually in your terminal. If no environment is needed, leave it blank.  
 - **Parameter Errors**  
-Inspect _params.txt after running generate_params.py. Verify that the parameters match what your script expects.  
+Inspect `_params.txt` after running `generate_params.py`. Verify that the parameters match what your script expects.  
 - **SLURM Errors**  
-Ensure your SLURM_ACCOUNT is correct and that resource requests (e.g., time, memory) in job_array.sh are sufficient. Check SLURM logs (e.g., slurm-<job_id>.out) for details.
+Ensure your `SLURM_ACCOUNT` is correct and that resource requests (e.g., time, memory) in job_array.sh are sufficient. Check SLURM logs (e.g., slurm-<job_id>.out) for details.
