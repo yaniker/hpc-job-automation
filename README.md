@@ -34,6 +34,9 @@ MAX_SUBMIT=20
 
 # Path to the job array script (do not change unless necessary)
 JOB_SCRIPT="job_array.sh"
+
+# Sleep duration in seconds when queue is full
+SLEEP_DURATION=90
 ```
 
 ## Generating Parameters
