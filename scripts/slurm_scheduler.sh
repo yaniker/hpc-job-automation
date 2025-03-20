@@ -15,7 +15,7 @@ if [ -n "$ENV_ACTIVATE" ]; then
 fi
 
 while [ $(wc -l < _params.txt) -gt 0 ]; do  # Do NOT change the name
-    ./submit_job_arrays.sh
+    ./_submit_job_arrays.sh
     sed -i '1,999d' _params.txt
 done
 
