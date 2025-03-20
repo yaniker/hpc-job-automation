@@ -34,6 +34,7 @@ MAX_SUBMIT=20
 
 # Path to the job array script (do not change unless necessary)
 JOB_SCRIPT="job_array.sh"
+```
 
 ## Generating Parameters
 The generate_params.py script generates a list of parameters for your jobs, which are saved in _params.txt. Each line in _params.txt represents the arguments for a single job.
