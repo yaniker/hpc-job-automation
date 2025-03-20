@@ -1,19 +1,23 @@
 #!/bin/bash
-# Change based on your shell. (e.g., Bash, C, ZSH etc.)
 
-#SBATCH --job-name=my_job_array #Name accordingly
-#SBATCH --time=48:00:00 # Recommend to keep this as high as possible given the other jobs will be submitted automatically as long as this script is active.
-#SBATCH --account=your_account_name  # REPLACE with your SLURM account
-#SBATCH --mem=1GB # Recommended to keep low as its main function is to regulate other jobs.
+# Source the configuration file
+source config.txt
+
+#SBATCH --job-name=my_job_array
+#SBATCH --time=48:00:00
+#SBATCH --account=$SLURM_ACCOUNT
+#SBATCH --mem=1GB
 #SBATCH --output=./slurm/slurm-%A_%a.out
 
-source ~/miniconda3/etc/profile.d/conda.sh
-conda activate yanik-tfgpu
+# Activate environment if specified
+if [ -n "$ENV_ACTIVATE" ]; then
+    eval "$ENV_ACTIVATE"
+fi
 
-while [ $(wc -l < _params.txt) -gt 0 ]; do # Do NOT change the name.
+while [ $(wc -l < _params.txt) -gt 0 ]; do  # Do NOT change the name
     ./submit_job_arrays.sh
-    sed -i '1,999d' params.txt
+    sed -i '1,999d' _params.txt
 done
 
-echo 'All jobs processed. Exiting slurm_scheduler.sh
+echo "All jobs processed. Exiting slurm_scheduler.sh"
 exit 0

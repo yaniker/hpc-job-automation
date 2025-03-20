@@ -1,19 +1,9 @@
 #!/bin/bash
-# Change based on your shell. (e.g., Bash, C, ZSH etc.)
 
-if [ "$#" -ne 4 ]; then
-    echo "Usage: $0 TOTAL_TASKS MAX_TASKS_PER_JOB MAX_SUBMIT JOB_SCRIPT"
-    echo "  TOTAL_TASKS: Total number of tasks to run"
-    echo "  MAX_TASKS_PER_JOB: Maximum tasks per job array"
-    echo "  MAX_SUBMIT: Maximum concurrent jobs allowed"
-    echo "  JOB_SCRIPT: Path to the SLURM job script (e.g., job_array.sh)"
-    exit 1
-fi
+# Source the configuration file
+source config.txt
 
-TOTAL_TASKS=$1
-MAX_TASKS_PER_JOB=$2
-MAX_SUBMIT=$3
-JOB_SCRIPT=$4
+TOTAL_TASKS=$(wc -l < _params.txt)  # Calculate dynamically
 
 _next_task_id=1
 _submitted_not_in_queue=0
