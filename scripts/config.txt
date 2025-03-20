@@ -4,7 +4,7 @@
 SLURM_ACCOUNT=your_account_name
 
 # Path to your executable script
-EXECUTABLE="python your_script.py"
+EXECUTABLE="python ./path_to_your_script/script.py"
 
 # Environment activation command (leave blank if not needed)
 ENV_ACTIVATE="source ~/miniconda3/etc/profile.d/conda.sh && conda activate your_env_name"
@@ -15,3 +15,6 @@ MAX_SUBMIT=20
 
 # Path to the job array script (do not change unless necessary)
 JOB_SCRIPT="job_array.sh"
+
+# Sleep duration in seconds when queue is full
+SLEEP_DURATION=90

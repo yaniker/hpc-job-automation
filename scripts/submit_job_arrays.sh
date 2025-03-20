@@ -1,9 +1,11 @@
 #!/bin/bash
+# Change based on your shell. (e.g., Bash, C, ZSH etc.)
 
 # Source the configuration file
 source config.txt
 
-TOTAL_TASKS=$(wc -l < _params.txt)  # Calculate dynamically
+# Calculate TOTAL_TASKS dynamically
+TOTAL_TASKS=$(wc -l < _params.txt)
 
 _next_task_id=1
 _submitted_not_in_queue=0
@@ -15,8 +17,8 @@ while [ $_next_task_id -le $TOTAL_TASKS ]; do
     max_possible=$((MAX_SUBMIT - adjusted_current_jobs))
 
     if [ $max_possible -le 0 ]; then
-        echo "Queue full. Waiting... (Current: $adjusted_current_jobs, Max: $MAX_SUBMIT)"
-        sleep 90
+        echo "Queue full. Waiting for $SLEEP_DURATION seconds... (Current: $adjusted_current_jobs, Max: $MAX_SUBMIT)"
+        sleep $SLEEP_DURATION
         _submitted_not_in_queue=0
         continue
     fi
