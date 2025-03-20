@@ -12,7 +12,7 @@ conda activate yanik-tfgpu
 
 while [ $(wc -l < _params.txt) -gt 0 ]; do # Do NOT change the name.
     ./submit_job_arrays.sh
-    sed -i '1,999d' params_vae.txt
+    sed -i '1,999d' params.txt
 done
 
 echo 'All jobs processed. Exiting slurm_scheduler.sh
