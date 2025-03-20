@@ -1,6 +1,6 @@
 # HPC Job Automation
 
-This tool automates the process of submitting multiple jobs to an HPC cluster using SLURM. It simplifies running your script with different sets of parameters by generating parameter combinations and managing job submissions in a controlled manner.
+I have developed this tool several years ago to automate job submission to any HPC I work with. What it does is to continously send new jobs via SLURM to the HPC while observing the fair usage limitations. It simplifies running your script with different sets of parameters by generating parameter combinations and managing job submissions in a controlled manner.
 
 ## Prerequisites
 
