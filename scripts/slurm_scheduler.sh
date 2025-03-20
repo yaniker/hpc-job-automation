@@ -11,9 +11,9 @@ source ~/miniconda3/etc/profile.d/conda.sh
 conda activate yanik-tfgpu
 
 while [ $(wc -l < _params.txt) -gt 0 ]; do # Do NOT change the name.
-    ./submit_job_arrays_vae.sh
+    ./submit_job_arrays.sh
     sed -i '1,999d' params_vae.txt
 done
 
-echo 'All jobs processed. Exiting job_vae.slurm
+echo 'All jobs processed. Exiting slurm_scheduler.sh
 exit 0

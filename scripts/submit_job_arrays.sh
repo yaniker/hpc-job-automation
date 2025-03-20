@@ -1,4 +1,5 @@
 #!/bin/bash
+# Change based on your shell. (e.g., Bash, C, ZSH etc.)
 
 if [ "$#" -ne 4 ]; then
     echo "Usage: $0 TOTAL_TASKS MAX_TASKS_PER_JOB MAX_SUBMIT JOB_SCRIPT"
@@ -14,23 +15,23 @@ MAX_TASKS_PER_JOB=$2
 MAX_SUBMIT=$3
 JOB_SCRIPT=$4
 
-next_task_id=1
-submitted_not_in_queue=0
+_next_task_id=1
+_submitted_not_in_queue=0
 
-while [ $next_task_id -le $TOTAL_TASKS ]; do
+while [ $_next_task_id -le $TOTAL_TASKS ]; do
     # Check current job queue
     CURRENT_JOBS=$(squeue -u $USER -h | wc -l)
-    adjusted_current_jobs=$((CURRENT_JOBS + submitted_not_in_queue))
+    adjusted_current_jobs=$((CURRENT_JOBS + _submitted_not_in_queue))
     max_possible=$((MAX_SUBMIT - adjusted_current_jobs))
 
     if [ $max_possible -le 0 ]; then
         echo "Queue full. Waiting... (Current: $adjusted_current_jobs, Max: $MAX_SUBMIT)"
         sleep 90
-        submitted_not_in_queue=0
+        _submitted_not_in_queue=0
         continue
     fi
 
-    remaining_tasks=$((TOTAL_TASKS - next_task_id + 1))
+    remaining_tasks=$((TOTAL_TASKS - _next_task_id + 1))
     if [ $MAX_TASKS_PER_JOB -lt $max_possible ]; then
         temp=$MAX_TASKS_PER_JOB
     else
@@ -42,8 +43,8 @@ while [ $next_task_id -le $TOTAL_TASKS ]; do
         tasks_to_submit=$remaining_tasks
     fi
 
-    start=$next_task_id
-    end=$((next_task_id + tasks_to_submit - 1))
+    start=$_next_task_id
+    end=$((_next_task_id + tasks_to_submit - 1))
     if [ $end -gt $TOTAL_TASKS ]; then
         end=$TOTAL_TASKS
     fi
@@ -51,6 +52,6 @@ while [ $next_task_id -le $TOTAL_TASKS ]; do
     echo "Submitting array $start-$end"
     sbatch --array=$start-$end $JOB_SCRIPT
 
-    next_task_id=$((end + 1))
-    submitted_not_in_queue=$((submitted_not_in_queue + tasks_to_submit))
+    _next_task_id=$((end + 1))
+    _submitted_not_in_queue=$((_submitted_not_in_queue + tasks_to_submit))
 done

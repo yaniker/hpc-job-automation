@@ -31,3 +31,12 @@ param2 = [1, 2]
 with open("params.txt", "w") as f:
     for p1, p2 in itertools.product(param1, param2):
         f.write(f"{p1} {p2}\n")
+```
+
+### Step 2: Configure Job Script
+
+
+
+
+**Notes**:
+Currently only works with `Python` and `argparse` to import attributes to your code. Will improve its usability in the future.
