@@ -40,7 +40,7 @@ SLEEP_DURATION=90
 ```
 
 ## Generating Parameters
-The `generate_params.py` script generates a list of parameters for your jobs, which are saved in `_params.txt`. Each line in _params.txt represents the arguments for a single job.
+The `generate_params.py` script generates a list of parameters for your jobs, which are saved in `_params.txt`. Each line in `_params.txt` represents the arguments for a single job.
 
 ### Example `generate_params.py`
 ```
@@ -62,7 +62,7 @@ with open("_params.txt", "w") as f:
 ### Running the Script
 Run the script to create _params.txt:
 `python generate_params.py`
-Edit `generate_params.py` to define your own parameters based on what your script (your_script.py) expects.
+Edit `generate_params.py` to define your own parameters based on what your script (`your_script.py`) expects.
 
 ## Job Array Script
 The `job_array.sh` script is pre-configured to execute your script with parameters from _params.txt. It sources settings from `config.txt`, so you typically don’t need to modify it directly. However, you may need to adjust SLURM directives (e.g., --time, --mem) in `job_array.sh` to match your job’s resource requirements.
