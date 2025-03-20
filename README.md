@@ -40,7 +40,7 @@ SLEEP_DURATION=90
 ```
 
 ## Generating Parameters
-The generate_params.py script generates a list of parameters for your jobs, which are saved in _params.txt. Each line in _params.txt represents the arguments for a single job.
+The `generate_params.py` script generates a list of parameters for your jobs, which are saved in `_params.txt`. Each line in _params.txt represents the arguments for a single job.
 
 ### Example `generate_params.py`
 ```
@@ -95,4 +95,4 @@ Double-check the `ENV_ACTIVATE` field in `config.txt`. Ensure the command works 
 - **Parameter Errors**  
 Inspect `_params.txt` after running `generate_params.py`. Verify that the parameters match what your script expects.  
 - **SLURM Errors**  
-Ensure your `SLURM_ACCOUNT` is correct and that resource requests (e.g., time, memory) in job_array.sh are sufficient. Check SLURM logs (e.g., slurm-<job_id>.out) for details.
+Ensure your `SLURM_ACCOUNT` is correct and that resource requests (e.g., time, memory) in `job_array.sh` are sufficient. Check SLURM logs (e.g., slurm-<job_id>.out) for details.
