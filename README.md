@@ -30,7 +30,7 @@ EXECUTABLE="python your_script.py" ...
 The `generate_params.py` script generates a list of parameters for your jobs, which are saved in `_params.txt`. Each line in `_params.txt` represents the arguments for a single job.
 
 ### Running the Script
-Run the script to create _params.txt:
+Run the script to create `_params.txt`:
 `python generate_params.py`
 Edit `generate_params.py` to define your own parameters based on what your script (`your_script.py`) expects.
 
