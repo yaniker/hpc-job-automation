@@ -4,6 +4,11 @@
 # Source the configuration file
 source config.txt
 
+if [ ! -f "_params.txt" ]; then
+    echo "Error: _params.txt does not exist" >&2
+    exit 1
+fi
+
 # Calculate TOTAL_TASKS dynamically
 TOTAL_TASKS=$(wc -l < _params.txt)
 
