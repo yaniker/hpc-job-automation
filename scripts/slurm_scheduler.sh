@@ -9,6 +9,11 @@ source config.txt
 #SBATCH --mem=1GB
 #SBATCH --output=./slurm/slurm-%A_%a.out
 
+if [ ! -f "_params.txt" ]; then
+    echo "Error: _params.txt does not exist" >&2
+    exit 1
+fi
+
 # Activate environment if specified
 if [ -n "$ENV_ACTIVATE" ]; then
     eval "$ENV_ACTIVATE"
